@@ -1,0 +1,141 @@
+// The naming feels a little wrong here (1024px isn't really "small") but ¯\_(ツ)_/¯
+$xxs: 34rem;
+$xs: 42rem;
+$sm: 56rem;
+$md: 66rem;
+$lg: 82rem;
+$xl: 92rem;
+$xxl: 108rem;
+$xxxl: 122rem;
+
+:root {
+	// Looks kinda messy but allows for colors to be lightened or darkened.
+	// Maybe could just use Sass color functions instead? Oh well.
+	--lightBlueHS: 199, 33%;
+	--yellowHS: 49, 100%;
+	--redHS: 349, 100%;
+	--lightGrayHS: 220, 2%;
+
+	--yellowHSL: 49.1, 100%, 50%; //#ffd100
+	--lightGrayHSL: 220, 2%, 66%; //#a7a8aa
+	--lightBlueHSL: 199, 33%, 60.95%; //#7ba7bc
+	--darkBlueHSL: 201, 42%, 35.2%; //#34657f
+	--orangeHSL: 22, 100%, 53.8%; //#ff6a13
+	--redHSL: 349, 100%, 45%; //#e6002a
+	--midGrayHSL: 204, 2%, 54%; // #878a8c
+	// --darkGrayHSL: 214, 4%, 34%; // Older darkGray based on #53565a
+	--darkGrayHSL: 210, 4%, 27%; // Newer, darker darkGray based on #424548
+	--darkerGrayHSL: 349, 25%, 16%; // #331f22
+	--whiteHSL: 0, 0%, 99%; // #fcfcfc
+	--trueWhiteHSL: 0, 0%, 100%; // #ffffff
+	--blackHSL: 210, 33%, 9.5%; // #101820
+	--trueBlackHSL: 0, 0%, 0%; // #000000
+
+	--white: hsl(var(--whiteHSL));
+	--trueWhite: hsl(var(--trueWhiteHSL));
+
+	--black: hsl(var(--blackHSL));
+	--trueBlack: hsl(var(--trueBlackHSL));
+
+	--headingFont: 'Averta-Std', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif;
+	--bodyFont: 'Alkes', Georgia, serif;
+	--codeFont: 'MonoLisa', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+	--bodyFontWeight: normal;
+	--bodyLineHeight: 1.55;
+	--bodyFontSize: 1.125rem;
+
+	@media (min-width: $xs) {
+		--bodyFontSize: 1.1875rem;
+	}
+
+	@media (min-width: $lg) {
+		--bodyFontSize: 1.25rem;
+	}
+
+	--yellow: hsl(var(--yellowHSL));
+	--orange: hsl(var(--orangeHSL));
+	--red: hsl(var(--redHSL));
+	--lightestGray: hsl(var(--lightGrayHS), 94%);
+	--lighterGray: hsl(var(--lightGrayHS), 86%);
+	--lightGray: hsl(var(--lightGrayHSL));
+	--midGray: hsl(var(--midGrayHSL));
+	--darkGray: hsl(var(--darkGrayHSL));
+	--darkerGray: hsl(var(--darkerGrayHSL));
+	--lightBlue: hsl(var(--lightBlueHSL));
+	--lighterBlue: hsl(var(--lightBlueHS), 90%);
+	--lightestBlue: hsl(var(--lightBlueHS), 95%);
+	--darkBlue: hsl(var(--darkBlueHSL));
+	--darkerBlue: hsl(var(--darkBlueHSL), 20%);
+
+	--blueToYellow: #7ba7bc, #75b1bf, #66c6b6, #4fd27b, #56e035, #acef1b, #faf008, #ffd100;
+
+	--ink: var(--darkGray);
+	--paper: var(--white);
+	--paperHSL: var(--whiteHSL);
+	--headingColor: var(--darkerGray);
+	--accentColor: var(--darkBlue);
+	--linkColor: var(--darkBlue);
+	--highlightColor: var(--darkGray);
+
+	--maxWidth: 34rem;
+	--sidebarWidth: 15rem;
+	--margin: var(--quarterNote);
+
+	--sixteenthNote: calc(var(--quarterNote) / 4);
+	--eighthNote: calc(var(--quarterNote) / 2);
+	--quarterNote: 1.25rem;
+	--dottedQuarterNote: calc(var(--quarterNote) * 1.5);
+	--halfNote: calc(var(--quarterNote) * 2);
+	--dottedHalfNote: calc(var(--quarterNote) * 3);
+	--wholeNote: calc(var(--quarterNote) * 4);
+	--tiedWholeNote: calc(var(--quarterNote) * 5);
+	--dottedWholeNote: calc(var(--quarterNote) * 6);
+
+	--buttonSize: 2.2rem;
+	--buttonBackground: var(--paper);
+
+	@media (min-width: $xs) {
+		--margin: var(--halfNote);
+	}
+
+	@media (min-width: $sm) {
+		--margin: var(--dottedHalfNote);
+	}
+
+	@media (min-width: $xxl) {
+		--margin: var(--wholeNote);
+	}
+
+	@media (min-width: $xxxl) {
+		--margin: var(--dottedWholeNote);
+	}
+
+	&.dark {
+		--paper: var(--black);
+		--paperHSL: var(--blackHSL);
+		--ink: var(--white);
+		--headingColor: var(--white);
+		--accentColor: var(--lightBlue);
+		--linkColor: var(--lightBlue);
+		--highlightColor: var(--darkerGray);
+		--lighterGray: hsl(var(--lightGrayHS), 26%);
+		--lightestGray: hsl(var(--lightGrayHS), 13%);
+	}
+
+	// Ensures media query only runs if a theme has not been set AND the user prefers dark color schemes
+	&:not(.light) {
+		@media (prefers-color-scheme: dark) {
+			--paper: var(--black);
+			--paperHSL: var(--blackHSL);
+			--ink: var(--white);
+			--headingColor: var(--white);
+			--accentColor: var(--lightBlue);
+			--linkColor: var(--lightBlue);
+			--highlightColor: var(--darkerGray);
+		}
+	}
+
+	font-size: var(--bodyFontSize);
+}
