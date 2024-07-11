@@ -2,7 +2,7 @@ import type Post from '../types/post'
 
 const EXTERNAL_POSTS: Post[] = [{
 		title: `Create better CSS forms with these design principles`,
-		subtitle: `LogRocket Blog`,
+		subtitle: `LogRocket Blogs`,
 		slug: `https://blog.logrocket.com/create-better-css-forms-design-principles/`,
 		coverImage: `build-better-css-forms-design-principles.png`,
 		coverWidth: 730,
